@@ -41,6 +41,7 @@ elif [ $INP == inst ]
 then
   cp apacheWheeleChair.sh awc
   sed -i -e '/echo "inst) install awc"/d' awc 
+  sudo mv awc /usr/bin
 else
   echo "wrong"
   read
