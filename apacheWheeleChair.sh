@@ -1,8 +1,8 @@
 echo "welcome to ApacheWheelChair"
 echo
 echo "1) start          s) status       v) version"
-echo "2) stop           ip) hostname"
-echo "3) reload"
+echo "2) stop           ip) hostname    t) Syntax"
+echo "3) reload         p) ports"
 echo "4) restart"
 echo
 echo "x) exit"
@@ -29,10 +29,18 @@ elif [ $INP == ip ]
 then
   clear
   hostname -i
+elif [ $INP == p ]
+then
+  clear
+  sudo netstat -tupan | grep -i apache2
 elif [ $INP == v ]
 then
   clear
   apache2 -v
+elif [ $INP == t ]
+then
+  clear
+  apache2 -t
 elif [ $INP == x ]
 then
   clear
@@ -40,7 +48,7 @@ then
 elif [ $INP == inst ]
 then
   cp apacheWheeleChair.sh awc
-  sed -i -e '/echo "inst) install awc"/d' awc 
+  sed -i -e '/echo "inst) install awc"/d' awc
   sudo mv awc /usr/bin
 else
   echo "wrong"
